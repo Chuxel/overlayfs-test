@@ -17,6 +17,7 @@ OVERLAY_MERGED_FOLDER="${CONTAINER_WORKSPACE_FOLDER}"
 
 #sudo rm -rf "${OVERLAY_WORK_FOLDER}"
 sudo mkdir -p "/cache" "${OVERLAY_WORK_FOLDER}"
+sudo chown ${USERNAME}:${USERNAME}  "/cache"
 echo "yep" > /cache/overlay-works.txt
 echo "yep" > /cache/overlay-works-2.txt
 sudo chown -R ${USERNAME}:${USERNAME} "/cache" "${OVERLAY_WORK_FOLDER}"
