@@ -33,6 +33,6 @@ sudo chown -R ${USERNAME}:${USERNAME} "/cache" "/cache/subfolder" "${OVERLAY_WOR
 sudo mount -t overlay overlay -o "lowerdir=/cache,upperdir=${OVERLAY_MERGED_FOLDER},workdir=${OVERLAY_WORK_FOLDER}" "${OVERLAY_MERGED_FOLDER}"
 
 cd "${CONTAINER_WORKSPACE_FOLDER}"
-find . -type f | touch -
+find . -type f | xargs touch
 
 exec "$@"
