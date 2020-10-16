@@ -12,5 +12,5 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive \
 
 COPY ./mount-overlay* /usr/local/share/
 COPY ./fix-bind-mount.sh /usr/local/share/
-ENTRYPOINT [ "/usr/local/share/mount-overlay.sh" ]
+ENTRYPOINT [ "/usr/local/share/docker-init.sh" ]
 CMD [ "sleep", "infinity" ]
