@@ -25,13 +25,14 @@ EOF
 
 #sudo rm -rf "${OVERLAY_WORK_FOLDER}"
 sudo mkdir -p "/cache" "/cache/subfolder" "${OVERLAY_WORK_FOLDER}"
-sudo chown ${USERNAME}:${USERNAME}  "/cache"
+sudo chown ${USERNAME}:${USERNAME} "/cache" "/cache/subfolder"
 echo "yep" > /cache/overlay-works.txt
 echo "yep" > /cache/subfolder/overlay-works-2.txt
 sudo chown -R ${USERNAME}:${USERNAME} "/cache" "${OVERLAY_WORK_FOLDER}"
 
 sudo mount -t overlay overlay -o "lowerdir=/cache,upperdir=${OVERLAY_MERGED_FOLDER},workdir=${OVERLAY_WORK_FOLDER}" "${OVERLAY_MERGED_FOLDER}"
 
-touch "${CONTAINER_WORKSPACE_FOLDER}/*"
+cd "${CONTAINER_WORKSPACE_FOLDER}"
+touch *
 
 exec "$@"
