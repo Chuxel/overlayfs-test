@@ -2,10 +2,10 @@
     "dockerFile": "Dockerfile",
     "runArgs": ["--init", "--privileged" ],
     "mounts": [ "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind" ],
-    "remoteEnv": {
-        "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}",
-        "CONTAINER_WORKSPACE_FOLDER": "${containerWorkspaceFolder}"
-    },
+    //"remoteEnv": {
+    //    "LOCAL_WORKSPACE_FOLDER": "${localWorkspaceFolder}",
+    //    "CONTAINER_WORKSPACE_FOLDER": "${containerWorkspaceFolder}"
+    //},
 	"settings": {
 		"terminal.integrated.shell.linux": "/bin/bash"
 	},
