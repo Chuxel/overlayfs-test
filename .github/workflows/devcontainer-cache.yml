@@ -1,0 +1,36 @@
+name: Dev Container Cache Image Generation
+
+on:
+  push:
+    paths:
+      - '.github/**'
+
+jobs:
+  devcontainer:
+    name: Generate cache image
+    runs-on: ubuntu-latest
+    steps:
+
+      - name: Azure CLI login
+        id: az_login
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZ_ACR_CREDS }}
+
+      - name: Checkout
+        id: checkout
+        uses: actions/checkout@v2
+
+      - name: Build and push
+        id: build_and_push
+        run: |
+          set -e
+
+          ACR_REGISTRY_NAME=$(echo ${{ secrets.REGISTRY }} | grep -oP '(.+)(?=\.azurecr\.io)')
+          az acr login --name $ACR_REGISTRY_NAME
+
+          az acr repository list --name $ACR_REGISTRY_NAME
+
+
+
+

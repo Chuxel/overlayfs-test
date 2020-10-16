@@ -1,0 +1,23 @@
+{
+    "dockerFile": "Dockerfile",
+    // "image": "mcr.microsoft.com/vscode/devcontainers/javascript-node:12",
+    "runArgs": ["--init", "--privileged" ],
+    "mounts": [ "source=/var/run/docker.sock,target=/var/run/docker-host.sock,type=bind" ],
+	"settings": {
+		"terminal.integrated.shell.linux": "/bin/bash"
+	},
+    // "image": "mcr.microsoft.com/vscode/devcontainers/dotnetcore:3.1",
+    "containerEnv": {
+        "DOTNET_ROOT": "/root/workspace/aspnetcore/.dotnet",
+        "DOTNET_MULTILEVEL_LOOKUP": "0"
+    },
+    "remoteEnv": {
+        "PATH": "${containerEnv:DOTNET_ROOT}:${containerEnv:PATH}"
+    },
+    "extensions": [],
+    //"image": "mcr.microsoft.com/vscode/devcontainers/universal:0.17"
+    //"image": "ghcr.io/julia-vscode/julia-devcontainer"
+    //"postCreateCommand": "source $NVM_DIR/nvm.sh && nvm install --lts"	
+    "overrideCommand": false,
+    "remoteUser": "node"
+}
